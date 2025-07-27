@@ -2,7 +2,7 @@
 A web app that connects students with compatible study partners by matching them based on course topics, study preferences, availability, and academic goals. Create or join study groups tailored to your learning style.
 
 # Team Name:
-StudySync (Temporary Name)
+Wisper (Temporary Name)
 
 ## 👥 Member Roles
 
@@ -10,7 +10,6 @@ StudySync (Temporary Name)
 
 | Name               | Role               | GitHub Profile                              | HTML File                                                                                       |
 |--------------------|--------------------|---------------------------------------------|--------------------------------------------------------------------------------------------------|
-| Miguelangel Ortega | Project Manager    | [Mirio1010](https://github.com/Mirio1010)   | [Miguelangel_Ortega.html](https://Mirio1010.github.io/Study-Group-Website/Members%20HTML%20files/Miguelangel_Ortega.html) |
 | Muhammad Jamal     | Frontend Developer | [muj-786](https://github.com/muj-786)       |  [muj-Self-Intro.html](https://Mirio1010.github.io/Study-Group-Website/Members%20HTML%20files/muj-Self-Intro.html)                                                                                                                          |
 | Sufian Ali         | Backend Developer  | [Sufian000](https://github.com/Sufian000)   |  [Sufian_Ali.html](https://Mirio1010.github.io/Study-Group-Website/Members%20HTML%20files/Sufian%20Ali.html)  |
 
