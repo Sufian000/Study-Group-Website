@@ -1,32 +1,145 @@
-# Study-Group-Website
-A web app that connects students with compatible study partners by matching them based on course topics, study preferences, availability, and academic goals. Create or join study groups tailored to your learning style.
+# Whispr — Real-time Chat Application  
 
-# Team Name:
-Wisper (Temporary Name)
+---
 
-## 👥 Member Roles
+## 📖 Overview  
+**Whispr** is a lightweight, real-time chat application designed for **study groups and small teams**. It delivers instant communication with minimal friction, avoiding laggy polling and heavy frameworks.  
 
-> *Note: These roles are not final and are subject to change!*
+Developed as part of **CISC 3140 (Summer 2025)**:  
+- **Sufian Ali** — Frontend Lead (React, WebSocket client)  
+- **Muhammad Jamal** — Backend Lead (Node.js, Express, MongoDB)  
 
-| Name               | Role               | GitHub Profile                              | HTML File                                                                                       |
-|--------------------|--------------------|---------------------------------------------|--------------------------------------------------------------------------------------------------|
-| Muhammad Jamal     | Frontend Developer | [muj-786](https://github.com/muj-786)       |  [muj-Self-Intro.html](https://Mirio1010.github.io/Study-Group-Website/Members%20HTML%20files/muj-Self-Intro.html)                                                                                                                          |
-| Sufian Ali         | Backend Developer  | [Sufian000](https://github.com/Sufian000)   |  [Sufian_Ali.html](https://Mirio1010.github.io/Study-Group-Website/Members%20HTML%20files/Sufian%20Ali.html)  |
+🔗 **Repository**: [Study-Group-Website](https://github.com/Sufian000/Study-Group-Website.git)  
 
+---
 
+## ✨ Features  
+- ⚡ **Real-time messaging** with WebSockets  
+- 🖥️ **Modern React SPA** with chat UI, conversation lists, and user selector  
+- 🔐 **JWT-based authentication** (partial implementation)  
+- 💬 **Message persistence** with MongoDB & Mongoose  
+- 🛠️ **Structured error handling** with consistent responses  
+- 📂 **Well-organized codebase** for future scaling  
 
-# Project Idea
-Study Group Matcher is a web application designed to help students connect and collaborate by joining or creating study groups. Users can browse groups based on course topics, availability, studying preferences (e.g., flashcards, discussion-based), and academic goals (e.g., exam prep, weekly reviews). By using a smart matching system, students can find study partners that suit their learning styles and schedules, enhancing both collaboration and productivity. 
+---
 
-We will also try to incorporate a messaging system that will allow students to message each other. If we get that working to our standards, we will also try implementing video calling aswell.
+## 🏗️ System Architecture  
 
-# Flowchart
+**Frontend (React SPA)**  
+- SPA with chat window, user selector, and conversation list.  
+- Optimistic UI updates, WebSocket integration, toast notifications.  
 
-<img width="316" height="631" alt="Website_Flowchart" src="https://github.com/user-attachments/assets/388235a9-d5d4-4966-a79f-6c09ab76b728" />
+**Backend (Node.js + Express)**  
+- REST API for users, conversations, and messages.  
+- JWT-based authentication middleware.  
 
-# Repository Structure
-The project will be organized in 3 folders. They are as follows; Frontend, Backend, and Assets.
+**WebSocket Layer (ws)**  
+- Handles events: `message:new`, `message:ack`, `presence:update`.  
 
-# Initial Layout Of Real-Time Communication App
+**Database (MongoDB + Mongoose)**  
+- Schemas for users, conversations, and messages.  
+- Indexed queries for recent messages and conversation lists.  
 
-<img width="1366" height="768" alt="Real-Time Communication Graphics for Web App-2" src="https://github.com/user-attachments/assets/9e4063eb-4389-4da9-960b-c0b19a066116" /><img width="1366" height="768" alt="Real-Time Communication Graphics for Web App" src="https://github.com/user-attachments/assets/fc3008c5-2109-4798-8384-bd8d473ee062" />
+---
+
+## 🚀 Setup & Installation  
+
+### Prerequisites  
+- Node.js **v20+**  
+- npm  
+- MongoDB (local or remote instance)  
+
+### Clone Repository  
+```bash
+git clone https://github.com/Sufian000/Study-Group-Website.git
+cd Study-Group-Website
+```
+
+### Backend Setup  
+```bash
+cd server
+cp .env.example .env   # configure MONGODB_URI and JWT_SECRET
+npm install
+npm run dev
+```
+Server runs at **http://localhost:4000**  
+
+### Frontend Setup  
+```bash
+cd ../client
+cp .env.example .env   # configure VITE_API_BASE and VITE_WS_URL
+npm install
+npm run dev
+```
+Client runs at **http://localhost:5173**  
+
+---
+
+## 🔑 Environment Variables  
+
+**Server**  
+- `MONGODB_URI` → MongoDB connection string  
+- `JWT_SECRET` → JWT secret key  
+- `PORT=4000`  
+
+**Client**  
+- `VITE_API_BASE=http://localhost:4000`  
+- `VITE_WS_URL=ws://localhost:4000`  
+
+---
+
+## 🧪 Smoke Test  
+1. Start MongoDB, backend server, and frontend client.  
+2. Open client → Confirm **“Connection successful!”** banner.  
+3. Check server logs for client connection acknowledgment.  
+
+---
+
+## 📂 Repository Structure  
+
+```
+Study-Group-Website/
+├─ Frontend/                               # Client-side application (React)
+│  ├─ src/                                 # Source code
+│  │  ├─ components/                       # Reusable UI components
+│  │  ├─ pages/                            # Views (LoginPage, Dashboard, StudyRoom)
+│  │  ├─ styles/                           # CSS / SCSS / Tailwind styles
+│  │  ├─ assets/                           # Images, icons, fonts
+│  │  ├─ App.js / App.tsx                  # Main application component
+│  │  └─ index.js / main.tsx               # Entry point
+│  ├─ public/                              # Static files (index.html, favicon, logos)
+│  ├─ package.json                         # Frontend dependencies
+│  └─ vite.config.js / webpack.config.js   # Build configuration
+│
+├─ Backend/                                # Server-side application (API + logic)
+│  ├─ src/
+│  │  ├─ routes/                           # API routes (auth, groups, chat, users)
+│  │  ├─ models/                           # Data models (User, Group, Message)
+│  │  ├─ controllers/                      # API handlers
+│  │  ├─ middleware/                       # Auth, validation, error handling
+│  │  ├─ services/                         # Business logic (group matching, notifications)
+│  │  ├─ utils/                            # Helper functions
+│  │  └─ index.ts / server.js              # Backend entry point
+│  ├─ package.json                         # Backend dependencies
+│  └─ tsconfig.json / .env.example         # TypeScript config / env sample
+│
+├─ Assets/                                 # Shared resources
+│  ├─ images/                              # Logos, icons, mockups
+│  ├─ docs/                                # Documentation (reports, diagrams, architecture)
+│  └─ ppt/                                 # Final project slides
+│
+├─ README.md                               # Project documentation
+├─ .gitignore                              # Ignore rules
+└─ .DS_Store                               # macOS system file (ignored)
+```
+
+---
+
+## 🧭 Roadmap  
+- ✅ Real-time messaging pipeline with acknowledgments  
+- 🔑 Full authentication (UI, registration, password reset)  
+- 📎 File/attachment uploads with pre-signed storage  
+- 🔍 Conversation search & message pagination  
+- 🐳 Docker deployment and CI/CD integration  
+
+---
